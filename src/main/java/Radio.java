@@ -25,7 +25,7 @@ public class Radio {
     }
 
     public int getCurrentStation() {
-            return currentStation;
+        return currentStation;
     }
 
     public void increaseVolume() {

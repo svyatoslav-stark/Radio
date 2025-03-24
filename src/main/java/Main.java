@@ -1,5 +1,5 @@
 public class Main {
-    Radio servise = new Radio();
+    Radio serviсe = new Radio();
 
 
 }
