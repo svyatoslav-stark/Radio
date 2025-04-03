@@ -1,52 +1,83 @@
 public class Radio {
-    private int currentStation = 0;
-    private int currentVolume = 0;
+    private int minStation = 0;
+    private int maxStation = 9;
+    private int minVolume = 0;
+    private int maxVolume = 100;
+    private int currentStation = minStation;
+    private int currentVolume = 30;
 
-    public void nextStation() {
-        if (currentStation == 9) {
-            currentStation = 0;
-        } else {
-            currentStation++;
-        }
+    public Radio() {
+        this.maxStation = 9;
     }
 
-    public void prevStation() {
-        if (currentStation == 0) {
-            currentStation = 9;
-        } else {
-            currentStation--;
+    public Radio(int numberOfStations) {
+        if (numberOfStations > 0) {
+            this.maxStation = numberOfStations - 1;
         }
-    }
-
-    public void setStation(int station) {
-        if (station >= 0 && station <= 9) {
-            currentStation = station;
-        }
+        this.maxStation = maxStation;
     }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
+    public int getMaxStation() {
+        return maxStation;
+    }
+
+    public int getMinStation() {
+        return minStation;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
+    }
+
+    public void nextStation() {
+        if (currentStation == maxStation) {
+            currentStation = minStation;
+        } else {
+            currentStation++;
+        }
+    }
+
+    public void prevStation() {
+        if (currentStation == minStation) {
+            currentStation = maxStation;
+        } else {
+            currentStation--;
+        }
+    }
+
+    public void setStation(int station) {
+        if (station >= minStation && station <= maxStation) {
+            currentStation = station;
+        }
+    }
+
     public void increaseVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
     }
 
     public void setVolume(int vol) {
-        if (vol >= 0 && vol <= 100) {
+        if (vol >= minVolume && vol <= maxVolume) {
             currentVolume = vol;
         }
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 }
